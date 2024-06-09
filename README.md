@@ -1,4 +1,4 @@
-# AstroPaper 📄
+# AstroPaper 📄 [![Netlify Status](https://api.netlify.com/api/v1/badges/a4d4cf62-ad3c-4623-991a-fcdd32b26f20/deploy-status)](https://app.netlify.com/sites/comfy-dango-aa8181/deploys)
 
 ![AstroPaper](public/astropaper-og.jpg)
 ![Typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
