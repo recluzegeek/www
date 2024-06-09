@@ -23,7 +23,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   <Header />
   <main id="main-content">
     <section id="hero">
-      <h1>Mingalaba</h1>
+      <h1>👋</h1>
       <a
         target="_blank"
         href="/rss.xml"
@@ -31,33 +31,38 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         aria-label="rss feed"
         title="RSS Feed"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon"
-          ><path
+        <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon">
+          <path
             d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"
-          ></path><path
+          ></path>
+          <path
             d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"
-          ></path><circle cx="6" cy="18" r="2"></circle>
+          ></path>
+          <circle cx="6" cy="18" r="2"></circle>
         </svg>
         <span class="sr-only">RSS Feed</span>
       </a>
 
       <p>
-        AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro
-        blog theme. This theme follows best practices and provides accessibility
-        out of the box. Light and dark mode are supported by default. Moreover,
-        additional color schemes can also be configured.
+        Welcome to the <em> rgk's</em> blog. I write about <em
+          >web development</em
+        >, <em>programming</em>, and other tech-related stuff. Like to explore
+        new things and share my knowledge with others. Feel free to explore the
+        blog posts and share your thoughts.
       </p>
       <p>
         Read the blog posts or check
         <LinkButton
           className="underline decoration-dashed underline-offset-4 hover:text-skin-accent"
-          href="https://github.com/satnaing/astro-paper#readme"
+          href="https://github.com/recluzegeek"
         >
           README
-        </LinkButton> for more info.
+        </LinkButton>
+        for more info.
       </p>
       {
         // only display if at least one social link is enabled
+
         socialCount > 0 && (
           <div class="social-wrapper">
             <div class="social-links">Social Links:</div>
@@ -112,8 +117,8 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     <div class="all-posts-btn-wrapper">
       <LinkButton href="/posts/">
         All Posts
-        <svg xmlns="http://www.w3.org/2000/svg"
-          ><path
+        <svg xmlns="http://www.w3.org/2000/svg">
+          <path
             d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
           ></path>
         </svg>
@@ -129,21 +134,27 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   #hero {
     @apply pb-6 pt-8;
   }
+
   #hero h1 {
     @apply my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl;
   }
+
   #hero .rss-link {
     @apply mb-6;
   }
+
   #hero .rss-icon {
     @apply mb-2 h-6 w-6 scale-110 fill-skin-accent sm:mb-3 sm:scale-125;
   }
+
   #hero p {
     @apply my-2;
   }
+
   .social-wrapper {
     @apply mt-4 flex flex-col sm:flex-row sm:items-center;
   }
+
   .social-links {
     @apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
   }
@@ -153,10 +164,12 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   #recent-posts {
     @apply pb-6 pt-12;
   }
+
   #featured h2,
   #recent-posts h2 {
     @apply text-2xl font-semibold tracking-wide;
   }
+
   .all-posts-btn-wrapper {
     @apply my-8 text-center;
   }
