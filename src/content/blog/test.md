@@ -4,7 +4,7 @@ author: rgk
 pubDatetime: 2025-09-21T05:17:19Z
 slug: test-post
 featured: false
-draft: false
+draft: true
 description: This is the example content of the example post.
 tags:
   - test
