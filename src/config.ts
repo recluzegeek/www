@@ -1,12 +1,12 @@
 import type { Site, SocialObjects } from "./types";
 
 export const SITE: Site = {
-  website: "https://recluzegeek.codes/", // replace this with your deployed domain
+  website: "https://recluzegeek.codes/",
   author: "recluzegeek",
-  desc: "A minimal, responsive and SEO-friendly Astro blog theme.",
+  desc:  "RGK Blog - A space where I share my insights and experiences as I learn and grow.",
   title: "Wisdom Scroll",
   ogImage: "astropaper-og.jpg",
-  lightAndDarkMode: true,
+  lightAndDarkMode: false,
   postPerPage: 5,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
 };
@@ -27,7 +27,7 @@ export const SOCIALS: SocialObjects = [
   {
     name: "Github",
     href: "https://github.com/recluzegeek",
-    linkTitle: ` ${SITE.title} on Github`,
+    linkTitle: `Visit my Github`,
     active: true,
   },
   {
@@ -44,14 +44,14 @@ export const SOCIALS: SocialObjects = [
   },
   {
     name: "LinkedIn",
-    href: "https://github.com/satnaing/astro-paper",
-    linkTitle: `${SITE.title} on LinkedIn`,
+    href: "https://linkedin.com/in/recluzegeek",
+    linkTitle: `See me on LinkedIn`,
     active: true,
   },
   {
     name: "Mail",
     href: "mailto:recluzegeek@gmail.com",
-    linkTitle: `Send an email to ${SITE.title}`,
+    linkTitle: `Send me an email`,
     active: true,
   },
   {
@@ -104,8 +104,8 @@ export const SOCIALS: SocialObjects = [
   },
   {
     name: "Discord",
-    href: "https://discord.com/recluzegeek",
-    linkTitle: `${SITE.title} on Discord`,
+    href: "https://discord.com/users/recluzegeek",
+    linkTitle: `Ping me on Discord`,
     active: true,
   },
   {
@@ -116,9 +116,9 @@ export const SOCIALS: SocialObjects = [
   },
   {
     name: "Reddit",
-    href: "https://github.com/satnaing/astro-paper",
-    linkTitle: `${SITE.title} on Reddit`,
-    active: false,
+    href: "https://www.reddit.com/user/Salman1057",
+    linkTitle: `Visit me on Reddit`,
+    active: true,
   },
   {
     name: "Skype",
