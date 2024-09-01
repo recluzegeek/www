@@ -1,16 +1,13 @@
 ---
 author: recluzegeek
-pubDatetime: 2024-09-23T04:58:53Z
-modDatetime: 2024-01-15T13:05:56.066Z
+pubDatetime: 2024-06-23T04:58:53Z
 title: FOSS Alternatives to NGROK
-slug: how-to-configure-zrok
+slug: ngrok-alternatives
 featured: true
 draft: false
 tags:
-  - configuration
   - foss
   - alternatives
-  - tunnelling
 description: How to configure & use foss alternatives to ngrok.
 ---
 
