@@ -14,4 +14,4 @@ tags:
 description: How to configure & use foss alternatives to ngrok.
 ---
 
-ngrok is great for rapid development as it allows us to test out our local applications out in the wild. We can create ngrok tunnel from our local application to the
+ngrok is great for rapid development as it allows us to test out our local applications out in the wild. We can create ngrok tunnel from our local application to the open internet.
