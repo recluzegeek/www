@@ -1,7 +1,8 @@
 ---
 title: Cyber Hackathon Workshop Experience — Day 1
 author: recluzegeek
-pubDatetime: 2024-09-3T18:11:06.130Z
+pubDatetime: 2024-09-3T16:11:06.130Z
+modDatetime: 2024-09-3T17:44:06.130Z
 description: Personal experience about attending first ever cyber workshop in person.
 tags:
     - write-ups
@@ -12,7 +13,7 @@ featured: true
 draft: false
 ---
 
-[IGNITE](https://ignite.org.pk/) in collaboration with Ministry of I.T has been organizing Cyberhackathon across major cities of Pakistan to attract youth towards untapped jobs of cybersecurity for past 4 years. Before the actual hackathon, organizers arrange workshops across cities to give the participants chance to brush up their cyber skills and gain knowledge from the industry experts. I had the chance to attend one of the workshops today & I'll be documenting my experience in this writeup.
+[IGNITE](https://ignite.org.pk/) in collaboration with Ministry of I.T. has been organizing Cyberhackathon across major cities of Pakistan to attract youth towards untapped jobs of cybersecurity for past 4 years. Before the actual hackathon, organizers arrange workshops across cities to give the participants chance to brush up their cyber skills and gain knowledge from the industry experts. I had the chance to attend one of the workshops today & I'll be documenting my experience in this writeup.
 
 ## Table of Content
 
