@@ -45,4 +45,10 @@ But NGROK is not FOSS, its subscription based service and has 1GB traffic which 
 
 ## SSH Tunneling
 
-SSH tunneling comes to rescue...
+SSH tunneling comes to rescue...Command is:
+
+```bash
+plink.exe <user>@<ip or domain> -pw <password> -P 22 -2 -4 -T -N -C -R 0.0.0.0:12345:127.0.0.1:3389
+```
+
+I'll explain the flags later on...:)

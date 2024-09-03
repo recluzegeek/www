@@ -3,7 +3,7 @@ author: recluzegeek
 pubDatetime: 2024-06-23T04:58:53Z
 title: FOSS Alternatives to NGROK
 slug: ngrok-alternatives
-featured: true
+featured: false
 draft: false
 tags:
   - foss
