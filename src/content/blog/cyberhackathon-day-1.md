@@ -2,7 +2,7 @@
 title: Cyber Hackathon Workshop Experience — Day 1
 author: recluzegeek
 pubDatetime: 2024-09-3T17:58:06.130Z
-modDatetime: 2024-09-3T18:01:06.130Z
+modDatetime: 2024-09-3T23:01:06.130Z
 slug: cyber-hackathon-workshop-experience-day-1
 featured: true
 draft: false
