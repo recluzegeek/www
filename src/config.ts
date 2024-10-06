@@ -6,7 +6,7 @@ export const SITE: Site = {
   desc:  "RGK Blog - A space where I share my insights and experiences as I learn and grow.",
   title: "Wisdom Scroll",
   ogImage: "astropaper-og.jpg",
-  lightAndDarkMode: false,
+  lightAndDarkMode: true,
   postPerPage: 5,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
 };
@@ -17,7 +17,7 @@ export const LOCALE = {
 } as const;
 
 export const LOGO_IMAGE = {
-  enable: true,
+  enable: false,
   svg: true,
   width: 216,
   height: 46,
