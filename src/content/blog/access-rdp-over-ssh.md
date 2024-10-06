@@ -2,8 +2,8 @@
 title: How to Access RDP over an SSH Tunnel
 author: M. Salman
 pubDatetime: 2024-07-21T10:11:06.130Z
+modDatetime:
 slug: how-to-access-rdp-over-ssh
-ogImage: ""
 featured: true
 draft: false
 _canonicalURL_: https://eviatargerzi.medium.com/how-to-access-rdp-over-ssh-tunnel-c0829631ad44
