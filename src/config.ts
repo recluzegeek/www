@@ -5,7 +5,7 @@ export const SITE: Site = {
   author: "recluzegeek",
   desc:  "RGK Blog - A space where I share my insights and experiences as I learn and grow.",
   title: "Wisdom Scroll",
-  ogImage: "astropaper-og.jpg",
+  ogImage: "wisdomscroll-og.jpg",
   lightAndDarkMode: true,
   postPerPage: 5,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
