@@ -10,23 +10,23 @@ while read _ file; do
   filecontent=$(cat "$file")
   frontmatter=$(echo "$filecontent" | awk -v RS='---' 'NR==2{print}')
   draft=$(echo "$frontmatter" | awk '/^draft: /{print $2}')
-
   if [ "$draft" = "false" ]; then
-    echo "$file modDatetime updated"
-    sed -i.bak "/---/,/---/s/^modDatetime:.*$/modDatetime: $(date -u "+%Y-%m-%dT%H:%M:%SZ")/" "$file"
-    git add "$file"
+    echo "$file modDateTime updated"
+    cat $file | sed "/---.*/,/---.*/s/^modDatetime:.*$/modDatetime: $(date -u "+%Y-%m-%dT%H:%M:%SZ")/" > tmp
+    mv tmp $file
+    git add $file
   fi
-
   if [ "$draft" = "first" ]; then
-    echo "First release of $file, draft set to false and modDatetime removed"
-    sed -i.bak "/---/,/---/s/^modDatetime:.*$/modDatetime:/" "$file"
-    sed -i.bak "/---/,/---/s/^draft:.*$/draft: true/" "$file"
-    git add "$file"
+    echo "First release of $file, draft set to false and modDateTime removed"
+    cat $file | sed "/---.*/,/---.*/s/^modDatetime:.*$/modDatetime:/" | sed "/---.*/,/---.*/s/^draft:.*$/draft: false/" > tmp
+    mv tmp $file
+    git add $file
   fi
 done
 
 # New files, add/update the pubDatetime
-git diff --cached --name-status | grep -i "^(A).*\.md$" | while read _ file; do
-  sed -i.bak "/---/,/---/s/^pubDatetime:.*$/pubDatetime: $(date -u "+%Y-%m-%dT%H:%M:%SZ")/" "$file"
-  git add "$file"
+git diff --cached --name-status | egrep -i "^(A).*\.(md)$" | while read a b; do
+  cat $b | sed "/---.*/,/---.*/s/^pubDatetime:.*$/pubDatetime: $(date -u "+%Y-%m-%dT%H:%M:%SZ")/" > tmp
+  mv tmp $b
+  git add $b
 done
