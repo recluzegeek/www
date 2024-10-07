@@ -23,5 +23,4 @@ const blog = defineCollection({
       readingTime: z.string().optional(),
     }),
 });
-
 export const collections = { blog };
