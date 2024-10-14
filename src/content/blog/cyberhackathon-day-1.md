@@ -4,7 +4,7 @@ author: recluzegeek
 pubDatetime: 2024-09-3T17:58:06.130Z
 modDatetime: 2024-09-3T23:01:06.130Z
 slug: cyber-hackathon-workshop-experience-day-1
-featured: true
+featured: false
 draft: false
 tags:
     - write-ups
