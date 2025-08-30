@@ -2,7 +2,7 @@
 title: Cursor in a Linux Container
 author: recluzegeek
 pubDatetime: 2025-08-30T03:33:15Z
-modDatetime: 2025-08-30T05:04:09Z
+modDatetime: 2025-08-30T12:58:57Z
 slug: containerize-cursor
 featured: true
 draft: false
@@ -220,6 +220,24 @@ For security and ease of doing, I would prefer 2nd option. Open the VSCode Setti
 and now you can start building amazing things.
 
 ![cursor-terminal](../../assets/images/containerize-cursor/cursor-terminal.png)
+
+## Docker Registry
+
+To save some time of you all, I've pushed the built image to docker registry, which is available at [recluzegeek/cursor-container](https://hub.docker.com/r/recluzegeek/cursor-container). Follow these steps:
+
+1. Download either [Docker](https://www.docker.com/) or [Podman](https://podman.io/)
+1. Run this command in the terminal afterwards:
+
+```bash
+docker run -it \
+  -e APP_USER_ID=$(id -u) \
+  -e APP_GROUP_ID=$(id -g) \
+  -p 5800:5800 \
+  -p 5900:5900 \
+  recluzegeek/cursor-container
+```
+
+Visit `http://localhost:5800` in your browser.
 
 ## Tips
 
