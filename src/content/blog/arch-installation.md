@@ -2,7 +2,7 @@
 title: Arch Installation
 author: recluzegeek
 pubDatetime: 2026-01-11T11:23:32Z
-modDatetime: 2026-01-11T12:07:49Z
+modDatetime: 2026-01-11T14:08:12Z
 slug: arch-install
 featured: true
 draft: false
@@ -124,6 +124,7 @@ hwclock --systohc 				# sync the hardware clock
 ### Locale Generation and `mkinitcpio`
 
 - Define the language, and keyboard settings. Edit the `/etc/locale.gen` using micro `/etc/locale.gen` and uncomment the locales you want, in my case I would uncomment the `en_US.UTF-8` on Line 171 and save it.
+  - Generate the locale using `locale-gen`
 - Next, we'll create new file `vconsole.conf` which will store the keyboard layout, and fonts setting which will be loaded on tty or in console. Use `micro /etc/vconsole.conf` to create and open the file. In my case, I pasted the `KEYMAP=us-acentos` in the file.
   - Once we've made the changes, we'll build our image that failed earlier during package installation step via `pacstrap`, and that is by using `mkinitcpio -P`. The rule for now is to run `mkinitcpio -P` whenever you change the locale or keyboard layout related things in `vconsole.conf`. Successful run of `mkinitcpio -P` will produce initramfs which will boot us.
 
