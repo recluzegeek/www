@@ -1,19 +1,10 @@
----
-title: Full Linux Desktop with x11docker
-author: recluzegeek
-pubDatetime: 2025-08-31T11:21:09Z
-modDatetime: 2025-08-31T14:22:00Z
-slug: full-linux-desktop-x11docker
-featured: true
-draft: false
-tags:
-  - containerization
-  - gui containers
-  - linux
-  - x11docker
-  - xfce
-description: Running full desktop environments like XFCE in containers using x11docker instead of VNC based hacks.
----
++++
+title = "Full Linux Desktop with x11docker"
+date = "2025-08-31"
+description = "Running full desktop environments like XFCE in containers using x11docker instead of VNC based hacks"
+[taxonomies]
+tags = ["linux", "containers"]
++++
 
 A few days ago, I posted a detailed guide on how I got **Cursor** running inside a container using `jlesage/docker-baseimage-gui`. And honestly? That setup worked. But “worked” and “worked well” are two entirely different things, and over the past few days, I kept running into issues that pushed me to look elsewhere.
 
@@ -28,8 +19,6 @@ I’m talking:
 - Debugging startup issues? Welcome to `cont-init.d` hell.
 
 It was becoming messy real fast.
-
-## Table of contents
 
 ## Why I Gave Up on Single App Containers
 

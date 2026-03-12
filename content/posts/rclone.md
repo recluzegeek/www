@@ -1,19 +1,12 @@
----
-author: recluzegeek
-pubDatetime: 2024-10-08T21:39:34.000+05:00
-modDatetime:
-title: Rclone - Sync your files to cloud storage
-featured: true
-draft: false
-tags:
-  - tools
-  - tutorial
-description: Learn the unified tool to manage files over 70+ cloud storage providers
----
++++
+title = "Rclone - Sync your files to cloud storage"
+date = "2024-10-08"
+description = "Learn the unified tool to manage files over 70+ cloud storage providers"
+[taxonomies]
+tags = ["sync-tool"]
++++
 
 rclone is a command line tool to manage cloud storage providers such as S3, Google Drive, OneDrive, Dropbox, NextCloud and many more (Feeling happy with 70 other providers :ps facebook reaction mantra). It is often termed as **"The Swiss army knife of cloud storage"**. Learn one program to rule all of the cloud providers :)
-
-## Table of contents
 
 ## Installation
 

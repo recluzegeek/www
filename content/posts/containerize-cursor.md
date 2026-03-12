@@ -1,23 +1,14 @@
----
-title: Cursor in a Linux Container
-author: recluzegeek
-pubDatetime: 2025-08-30T03:33:15Z
-modDatetime: 2025-08-30T12:58:57Z
-slug: containerize-cursor
-featured: true
-draft: false
-tags:
-  - containerization
-  - gui containers
-  - linux
-description: Containerize GUI Apps in Linux Containers
----
++++
+title = "Cursor in a Linux Container"
+date = "2025-08-30"
+description = "Containerize GUI Apps in Linux containers"
+[taxonomies]
+tags = ["linux", "containers"]
++++
 
 Lately, I've been into running GUI (Graphical User Interface) apps inside linux containers. Not full desktop environments, just lightweight, single-app containers for quick launch and a clean environment.
 
 ![end-result](../../assets/images/containerize-cursor/cursor-terminal.png)
-
-## Table of Contents
 
 ## Motivation
 

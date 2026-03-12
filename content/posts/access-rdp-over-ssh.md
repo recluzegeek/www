@@ -1,20 +1,8 @@
----
-title: How to Access RDP over an SSH Tunnel
-author: recluzegeek
-pubDatetime: 2024-07-21T10:11:06.130Z
-modDatetime: 2024-10-06T17:30:23Z
-slug: how-to-access-rdp-over-ssh
-featured: true
-draft: false
-_canonicalURL_: https://eviatargerzi.medium.com/how-to-access-rdp-over-ssh-tunnel-c0829631ad44
-description: Access your windows machine over the internet
-tags:
-  - tutorial
-  - tunnel
-  - rdp
----
-
-## Table of contents
++++
+title = "How to Access RDP over an SSH Tunnel"
+date = "2024-07-21"
+description = "Access your windows machine over the internet"
++++ 
 
 ## Introduction
 

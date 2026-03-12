@@ -1,24 +1,16 @@
----
-title: Arch Installation
-author: recluzegeek
-pubDatetime: 2026-01-11T11:23:32Z
-modDatetime: 2026-01-11T14:08:12Z
-slug: arch-install
-featured: true
-draft: false
-tags:
-  - linux
-  - virtualization
-description: Adventurous journey of Arch installation
----
++++
+title = "Arch Installation"
+date = "2026-01-11"
+description = "Adventurous journey of Arch installation"
+[taxonomies]
+tags = ["linux"]
++++
 
 I've been Linux user for more than 3 years, and during this period I've had used various distros as vms, and on bare metals. Moving to Linux upgraded my learning curve, and I got to know about new things everyday, and I can't be more thankful to past myself for choosing to switch to linux, long before windows started pushing AI Slop.
 
 I used Mint, Debian, Fedora (for sometime), Manjaro, and a long time with Arch derivatives like Endeavour, and Arco Linux. However, I've always this etching to install Arch without any scripts and work arounds, and I'm happy that I tried to do so, and this post is documenting my journey, and contains fixes of the problems I faced along the way.
 
 ---
-
-## Table of Contents
 
 ## Installation
 
