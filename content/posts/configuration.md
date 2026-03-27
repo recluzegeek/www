@@ -1,5 +1,5 @@
 +++
-title = "Configuring Apollo"
+title = "Configurings Apollo"
 date = "2024-07-09"
 
 [taxonomies]
