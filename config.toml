@@ -1,0 +1,74 @@
+base_url = "https://msidev.pk/"
+title = "msi"
+description = "A space where I share my insights and experiences as I learn and grow."
+build_search_index = true
+generate_feeds = true
+compile_sass = true
+minify_html = true
+taxonomies = [{ name = "tags" }]
+theme = "apollo"
+author = "msi"
+
+[search]
+include_title = true
+include_description = true
+include_path = true
+include_content = true
+index_format = "elasticlunr_json"
+
+[markdown]
+bottom_footnotes = true
+
+[markdown.highlighting]
+style = "class"
+light_theme = "github-light"
+dark_theme = "github-dark"
+error_on_missing_language = true
+
+[extra]
+toc = true
+use_cdn = false
+#logo = "hooded.png"
+favicon = "/icon/favicon.png"
+theme = "toggle"              # light, dark, auto, toggle, toggle-auto
+fancy_code = true
+dynamic_note = true           # a note that can be toggled
+mathjax = true
+repo_url = "https://github.com/recluzegeek/msi-blog"
+
+fediverse = false    # author attribution
+fediverse_creator = ""    # e.g. @user@instance
+
+menu = [
+    { name = "/posts", url = "/posts", weight = 1 },
+    { name = "/projects", url = "/projects", weight = 2 },
+    { name = "/talks", url = "/talks", weight = 3 },
+    { name = "/tags", url = "/tags", weight = 4 },
+]
+
+socials = [
+    # { name = "twitter", url = "https://twitter.com/recluzegeek", icon = "twitter" },
+    { name = "github", url = "https://github.com/recluzegeek/", icon = "github" },
+]
+
+stylesheets = [
+    # "custom.css"    # at /static/custom.css
+]
+
+[extra.taxonomies]
+sort_by = "page_count"         # e.g. name, page_count
+reverse = true
+
+[extra.analytics]
+enabled = false
+
+[extra.analytics.goatcounter]
+user = "your_user"
+host = "example.com" # default= goatcounter.com
+
+[extra.analytics.umami]
+website_id = "43929cd1-1e83...."
+host_url = "https://stats.mywebsite.com" # default: https://api-gateway.umami.dev/
+
+[extra.analytics.google]
+tracking_id = "G-XXXXXXXXXX"  # Your Google Analytics tracking ID
