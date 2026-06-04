@@ -1,7 +1,8 @@
 +++
 title = "Full Linux Desktop with x11docker"
 date = "2025-08-31"
-description = "Running full desktop environments like XFCE in containers using x11docker instead of VNC based hacks"
+[extra]
+dek = "Running full desktop environments like XFCE in containers using x11docker instead of VNC based hacks"
 [taxonomies]
 tags = ["linux", "containers"]
 +++

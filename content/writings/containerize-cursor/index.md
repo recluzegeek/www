@@ -1,7 +1,8 @@
 +++
 title = "Cursor in a Linux Container"
 date = "2025-08-30"
-description = "Containerize GUI Apps in Linux containers"
+[extra]
+dek = "Containerize GUI Apps in Linux containers"
 [taxonomies]
 tags = ["linux", "containers"]
 +++

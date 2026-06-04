@@ -1,7 +1,8 @@
 +++
 title = "How to Access RDP over an SSH Tunnel"
 date = "2024-07-21"
-description = "Access your windows machine over the internet"
+[extra]
+dek = "Access your windows machine over the internet"
 +++ 
 
 ## Introduction

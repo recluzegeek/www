@@ -1,6 +1,6 @@
 # msi Blog (Zola + Apollo Theme)
 
-This site is built using [Zola](https://www.getzola.org/) with the [Apollo theme](https://www.getzola.org/themes/apollo/) and hosted on Cloudflare Pages.
+This site is built using [Zola](https://www.getzola.org/) with the [Caret theme](https://github.com/recluzegeek/zola-caret) and hosted on Cloudflare Pages.
 
 ## Notes / Gotchas
 

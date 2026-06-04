@@ -1,7 +1,8 @@
 +++
 title = "Rclone - Sync your files to cloud storage"
 date = "2024-10-08"
-description = "Learn the unified tool to manage files over 70+ cloud storage providers"
+[extra]
+dek = "Learn the unified tool to manage files over 70+ cloud storage providers"
 [taxonomies]
 tags = ["sync-tool"]
 +++

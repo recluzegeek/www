@@ -1,7 +1,8 @@
 +++
 title = "Arch Installation"
 date = "2026-01-11"
-description = "Adventurous journey of Arch installation"
+[extra]
+dek = "Adventurous journey of Arch installation"
 [taxonomies]
 tags = ["linux"]
 +++

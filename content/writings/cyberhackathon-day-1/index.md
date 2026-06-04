@@ -1,7 +1,8 @@
 +++
 title = "Cyber Hackathon Workshop Experience - Day 1"
 date = "2024-09-3"
-description = "Personal experience about attending first ever cyber workshop in person"
+[extra]
+dek = "Personal experience about attending first ever cyber workshop in person"
 [taxonomies]
 tags = ["writeups"]
 +++
