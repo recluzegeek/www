@@ -1,74 +1,243 @@
-base_url = "https://msidev.pk/"
-title = "msi"
-description = "A space where I share my insights and experiences as I learn and grow."
-build_search_index = true
-generate_feeds = true
-compile_sass = true
-minify_html = true
-taxonomies = [{ name = "tags" }]
-theme = "apollo"
-author = "msi"
+# ============================================================
+# config.toml — Caret theme configuration
+#
+# HOW THIS FILE IS ORGANISED
+# ─────────────────────────────────────────────────────────────
+# Section 1 · Zola core settings
+# Section 2 · [extra] — all flat keys MUST come before any
+#             [extra.*] sub-table (TOML rule: you cannot reopen
+#             a table once a sub-table has been declared)
+# Section 3 · [extra.identity] sub-table
+# Section 4 · [[extra.nav]] entries
+# Section 5 · [[extra.socials]] entries
+# Section 6 · [[extra.terminal]] entries
+# Section 7 · [[extra.experience]] entries
+# Section 8 · [[extra.education]] entries
+# Section 9 · [[extra.skills]] entries
+# Section 10 · [[extra.publications]] entries
+#
+# Zola docs: https://www.getzola.org/documentation/getting-started/configuration/
+# ============================================================
 
-[search]
-include_title = true
-include_description = true
-include_path = true
-include_content = true
-index_format = "elasticlunr_json"
 
-[markdown]
-bottom_footnotes = true
+# ── Section 1: Zola core ────────────────────────────────────
+
+base_url         = "https://msidev.pk"
+title            = "msidev.pk"
+description      = "Software engineer — writing about computer vision, Linux, and building things."
+default_language = "en"
+theme = "caret"
+
+compile_sass       = true
+build_search_index = false   # Caret uses its own lightweight client-side search
+generate_feeds     = true
+feed_filenames     = ["atom.xml"]
+
+taxonomies = [
+  { name = "tags", feed = true },
+]
 
 [markdown.highlighting]
-style = "class"
-light_theme = "github-light"
-dark_theme = "github-dark"
-error_on_missing_language = true
+theme = "github-dark"             # available themes: https://github.com/getzola/giallo?tab=readme-ov-file#themes
+
+
+# ── Section 2: [extra] flat keys ────────────────────────────
+# ALL flat extra.* keys must live here, before any [extra.*]
+# sub-table. TOML does not allow reopening a table.
 
 [extra]
-toc = true
-use_cdn = false
-#logo = "hooded.png"
-favicon = "/icon/favicon.png"
-theme = "toggle"              # light, dark, auto, toggle, toggle-auto
-fancy_code = true
-dynamic_note = true           # a note that can be toggled
-mathjax = true
-repo_url = "https://github.com/recluzegeek/msi-blog"
+default_theme = "dark"   # "light" or "dark" — user toggle persists in localStorage
 
-fediverse = false    # author attribution
-fediverse_creator = ""    # e.g. @user@instance
+# Your role lines
+eyebrow = "software engineer"
+role    = "Associate Software Engineer — Python · TypeScript · computer vision · cloud"
 
-menu = [
-    { name = "/posts", url = "/posts", weight = 1 },
-    { name = "/projects", url = "/projects", weight = 2 },
-    { name = "/talks", url = "/talks", weight = 3 },
-    { name = "/tags", url = "/tags", weight = 4 },
+# Contact — used on the resume page
+email = "hello@msidev.pk"
+
+# Footer link
+theme_repo = "https://github.com/recluzegeek/zola-caret"
+
+# Uncomment to show a PDF download link on the resume page
+# resume_pdf = "/resume.pdf"
+
+# Homepage bio — HTML is allowed.
+# Triple single-quotes (TOML multi-line literal string) let you freely use
+# both double quotes (for HTML attributes) and apostrophes without any escaping.
+bio = '''I build with Python, TypeScript and Next.js, spend a lot of time around <a href="/resume">computer vision</a>, optimization and the cloud, and run a deliberately minimal Linux setup. This is where I write about what I'm learning — and the odd FOSS rabbit hole.'''
+
+# Daily drivers — rendered as a single mono line on the resume
+tools = ["Neovim", "VS Code", "Git", "DBeaver", "Docker", "Claude Code"]
+
+# ── Analytics & comments (all optional — leave commented to disable) ──
+
+# GoatCounter: create account at https://www.goatcounter.com/
+# then set this to your subdomain (e.g. "mysite" for mysite.goatcounter.com)
+# goatcounter_code = "yourcode"
+
+# Giscus comments: https://giscus.app/
+# 1. Enable Discussions on a GitHub repo
+# 2. Install the giscus app and copy the generated IDs
+# giscus_repo         = "yourname/blog-comments"
+# giscus_repo_id      = "R_xxx"
+# giscus_category     = "General"
+# giscus_category_id  = "DIC_xxx"
+
+
+# ── Section 3: Identity sub-table ───────────────────────────
+# Controls ~/logo in nav, terminal prompt, and hero greeting.
+# Sub-tables must come AFTER all flat [extra] keys above.
+
+[extra.identity]
+logo   = "msi"     # text after ~/  in the nav brand
+prompt = "msi"     # left side of terminal prompt: msi@msidev ~ $
+name   = "Salman"  # used in hero: "Hey, I'm {name}."
+
+
+# ── Section 4: Navigation ────────────────────────────────────
+# Each entry = one link in the nav bar.
+# route must match a content file or section (no leading slash).
+
+[[extra.nav]]
+route = "writings"
+label = "writings"
+
+[[extra.nav]]
+route = "publications"
+label = "publications"
+
+[[extra.nav]]
+route = "resume"
+label = "resume"
+
+
+# ── Section 5: Social links ──────────────────────────────────
+# Shown on homepage hero and resume page.
+# icon must be registered in templates/macros/icons.html.
+
+[[extra.socials]]
+label = "github"
+icon  = "github"
+href  = "https://github.com/recluzegeek"
+
+[[extra.socials]]
+label = "linkedin"
+icon  = "linkedin"
+href  = "https://linkedin.com/in/recluzegeek"
+
+# [[extra.socials]]
+# label = "reddit"
+# icon  = "reddit"
+# href  = "#"
+
+
+# ── Section 6: Terminal block ────────────────────────────────
+# Each entry = one command/output pair on the homepage.
+
+[[extra.terminal]]
+cmd = "whoami"
+out = "software engineer · computer vision · cloud · linux"
+
+[[extra.terminal]]
+cmd = "cat now.txt"
+out = "learning in the open, shipping small things, helping out in FOSS & non-profits."
+
+
+# ── Section 7: Experience ────────────────────────────────────
+
+[[extra.experience]]
+role  = "Associate Software Engineer"
+org   = "[Company]"
+date  = "2024 — present"
+bullets = [
+  "Build and ship product features across a Next.js + Supabase stack used in production.",
+  "Own end-to-end test coverage with Playwright-Python; cut flaky-test noise and CI time.",
+  "Model and tune MySQL/PostgreSQL schemas; debug and profile with DBeaver.",
 ]
 
-socials = [
-    # { name = "twitter", url = "https://twitter.com/recluzegeek", icon = "twitter" },
-    { name = "github", url = "https://github.com/recluzegeek/", icon = "github" },
+[[extra.experience]]
+role  = "Open-source contributor"
+org   = "FOSS & non-profits"
+date  = "ongoing"
+bullets = [
+  "Maintain a Java project (50★ / 16 forks) and contribute fixes to tools I use daily.",
 ]
 
-stylesheets = [
-    # "custom.css"    # at /static/custom.css
+
+# ── Section 8: Education ─────────────────────────────────────
+
+[[extra.education]]
+role = "Graduate Studies, Computer Science"
+org  = "XYZ University"
+date = "—"
+note = "Focus areas: computer vision, optimization, cloud & virtualization (KVM/QEMU)."
+
+
+# ── Section 9: Skills ────────────────────────────────────────
+
+[[extra.skills]]
+label = "engineering"
+items = [
+  "Confident Python & TypeScript development",
+  "Full-stack apps with Next.js + Supabase",
+  "End-to-end testing with Playwright-Python",
+  "Occasional Java, Bash & SQL",
+  "Linux (Arch · i3 · dwm) & KVM/QEMU virtualization",
 ]
 
-[extra.taxonomies]
-sort_by = "page_count"         # e.g. name, page_count
-reverse = true
+[[extra.skills]]
+label = "working with people"
+items = [
+  "A drive to keep learning and sharpen my own craft",
+  "Communicates clearly; gives and asks for feedback",
+  "Open to constructive criticism and change",
+]
 
-[extra.analytics]
-enabled = false
 
-[extra.analytics.goatcounter]
-user = "your_user"
-host = "example.com" # default= goatcounter.com
+# ── Section 10: Publications ─────────────────────────────────
+# status:  "published" / "peer-reviewed" → filled accent badge;
+#          anything else → neutral outline badge.
+# badge:   optional label override for the published badge.
+# authors: optional byline (HTML allowed; wrap your own name in
+#          <span class="me">…</span> to emphasise it).
+# image:   optional thumbnail shown on the right. Use a local path
+#          like "/publications/foo.png" (drop the file in static/),
+#          or any URL. Omit it and the entry spans full width.
+# links:   optional array of { label, href } — MUST come last in the
+#          entry (TOML: scalar keys cannot follow a sub-table).
 
-[extra.analytics.umami]
-website_id = "43929cd1-1e83...."
-host_url = "https://stats.mywebsite.com" # default: https://api-gateway.umami.dev/
+[[extra.publications]]
+title   = "[Paper title]"
+venue   = "IEEE · 2025"
+status  = "published"
+badge   = "peer-reviewed"
+authors = '<span class="me">M. Salman Ilyas</span>, A. Collaborator, and R. Advisor'
+note    = "Deepfake detection. Presented as a conference talk."
+image   = "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&q=80&auto=format&fit=crop"
 
-[extra.analytics.google]
-tracking_id = "G-XXXXXXXXXX"  # Your Google Analytics tracking ID
+[[extra.publications.links]]
+label = "doi"
+href  = "#"
+
+[[extra.publications.links]]
+label = "pdf"
+href  = "#"
+
+[[extra.publications.links]]
+label = "slides"
+href  = "#"
+
+[[extra.publications]]
+title   = "[Paper title]"
+venue   = "Journal · 2026"
+status  = "in review"
+authors = '<span class="me">M. Salman Ilyas</span>, et al.'
+note    = "Deepfake detection."
+image   = "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80&auto=format&fit=crop"
+
+[[extra.publications]]
+title   = "[Paper title]"
+venue   = "Journal · 2026"
+status  = "in review"
+authors = '<span class="me">M. Salman Ilyas</span>'
+note    = "Deepfake detection."
