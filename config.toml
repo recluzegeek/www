@@ -50,7 +50,7 @@ default_theme = "dark"   # "light" or "dark" — user toggle persists in localSt
 
 # Your role lines
 eyebrow = "software engineer"
-role    = "Associate Software Engineer — Python · TypeScript · computer vision · cloud"
+role    = "Associate Software Engineer — Python · TypeScript · Computer Vision · Cloud"
 
 # Contact — used on the resume page
 email = "hello@msidev.pk"
@@ -147,29 +147,41 @@ out = "learning in the open, shipping small things, helping out in FOSS & non-pr
 
 [[extra.experience]]
 role  = "Associate Software Engineer"
-org   = "[Company]"
-date  = "2024 — present"
+org   = "Devminified"
+date  = "2025 — present"
 bullets = [
   "Build and ship product features across a Next.js + Supabase stack used in production.",
   "Own end-to-end test coverage with Playwright-Python; cut flaky-test noise and CI time.",
-  "Model and tune MySQL/PostgreSQL schemas; debug and profile with DBeaver.",
+  "Maintained and scaled Flask-based microservices on AWS, adding new product features, resolving bugs.",
+  "Model and tune MySQL/PostgreSQL schemas; debugged and profiled database for performance.",
 ]
 
 [[extra.experience]]
-role  = "Open-source contributor"
-org   = "FOSS & non-profits"
+role  = "Backend Lead (Volunteer)"
+org   = "Tech for Palestine"
+date  = "2025 — ongoing"
+bullets = [
+  "Direct project strategy and oversee technical development across a FastAPI and Next.js stack.",
+  "Architect backend workflows and lead a remote, cross-functional engineering team to deliver impactful platforms."
+]
+
+[[extra.experience]]
+role  = "Open-Source Contributor"
+org   = "FOSS Ecosystem"
 date  = "ongoing"
 bullets = [
-  "Maintain a Java project (50★ / 16 forks) and contribute fixes to tools I use daily.",
+  "Contributed to the WalineJS port over to Cloudflare (Heno), expanding serverless deployment options.",
+  "Maintain the Zola-Caret theme and contribute fixes to tools I use daily."
 ]
+
 
 
 # ── Section 8: Education ─────────────────────────────────────
 
 [[extra.education]]
 role = "Graduate Studies, Computer Science"
-org  = "XYZ University"
-date = "—"
+org  = "GIFT University"
+date = "Feb 2021 — March 2025"
 note = "Focus areas: computer vision, optimization, cloud & virtualization (KVM/QEMU)."
 
 
@@ -207,17 +219,17 @@ items = [
 #          entry (TOML: scalar keys cannot follow a sub-table).
 
 [[extra.publications]]
-title   = "[Paper title]"
+title   = "AWARE-NET: Adaptive Weighted Averaging for Robust Ensemble Network in Deepfake Detection"
 venue   = "IEEE · 2025"
 status  = "published"
 badge   = "peer-reviewed"
-authors = '<span class="me">M. Salman Ilyas</span>, A. Collaborator, and R. Advisor'
+authors = '<span class="me">M. Salman</span>, Iqra Tariq, Mishal Zulfiqar, Muqadas Jalal, Sami Aujla, Sumbal Fatima'
 note    = "Deepfake detection. Presented as a conference talk."
-image   = "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&q=80&auto=format&fit=crop"
+image   = "https://www.researchgate.net/publication/391369196/figure/fig2/AS:11431281418385765@1746155340157/AWARE-NETs-two-tier-architecture-1-intra-architecture-ensemble-combining-Xception.png"
 
 [[extra.publications.links]]
 label = "doi"
-href  = "#"
+href  = "https://doi.org/10.1049/icp.2025.1162"
 
 [[extra.publications.links]]
 label = "pdf"
