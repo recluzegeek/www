@@ -19,22 +19,20 @@ I was hesitant to take on the infrastructure overhead of self-hosting Forgejo/Gi
 The process is straightforward. Running `git remote add origin` configures your default fetch and push lifecycle routes. To stack Codeberg on top of that loop, use the modular Bash script below. Just update the `REPO_PATH` variable to match your workspace, and run it inside your local project root:
 
 ```bash
-#!/usr/bin/env bash
-
 # Configurations
 REPO_PATH="recluzegeek/www"
 GH_URL="https://github.com"
 CODEBERG_URL="https://codeberg.org"
 
-GH_REPO_URL="\({GH_URL}/\){REPO_PATH}.git"
-CODEBERG_REPO_URL="\({CODEBERG_URL}/\){REPO_PATH}.git"
+GH_REPO_URL="$GH_URL/$REPO_PATH.git"
+CODEBERG_REPO_URL="$CODEBERG_URL/$REPO_PATH.git"
 
 # 1. Initialize origin with the default GitHub fetch/push URL
-git remote add origin "\$GH_REPO_URL"
+git remote add origin "$GH_REPO_URL"
 
 # 2. Convert origin into a dual-push target (order of flags is critical here)
-git remote set-url --push origin "\$GH_REPO_URL"
-git remote set-url --push --add origin "\$CODEBERG_REPO_URL"
+git remote set-url --push origin "$GH_REPO_URL"
+git remote set-url --push --add origin "$CODEBERG_REPO_URL"
 
 # 3. Print out result for validation
 git remote -v
