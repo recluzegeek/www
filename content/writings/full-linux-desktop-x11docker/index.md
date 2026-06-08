@@ -32,10 +32,6 @@ All I wanted was a clean setup to run Cursor with:
 
 But what I ended up with was me hacking around every edge case, even though the whole point of containers is to keep things **simple and reproducible**.
 
-Sure! Here’s a rephrased, cohesive version of your section in a smooth, natural tone — nothing important left out, just easier to read and more conversational:
-
----
-
 ## Meet `x11docker`
 
 When I first looked at `x11docker`, it felt like complete overkill. I mean, a full desktop environment? Just to run Cursor?
