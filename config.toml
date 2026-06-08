@@ -88,6 +88,13 @@ tools = ["Neovim", "VS Code", "Git", "DBeaver", "Docker", "Claude Code"]
 # Controls ~/logo in nav, terminal prompt, and hero greeting.
 # Sub-tables must come AFTER all flat [extra] keys above.
 
+# Homepage post list: mode "featured" shows posts flagged
+# `featured = true` (in a post's [extra]) first, then fills with the
+# latest; mode "latest" just shows the most recent. count = how many.
+[extra.homepage]
+mode  = "latest"   # "featured" | "latest"
+count = 4
+
 [extra.identity]
 logo   = "msi"     # text after ~/  in the nav brand
 prompt = "msi"     # left side of terminal prompt: msi@msidev ~ $
@@ -224,7 +231,20 @@ venue   = "IEEE · 2025"
 status  = "published"
 badge   = "peer-reviewed"
 authors = '<span class="me">M. Salman</span>, Iqra Tariq, Mishal Zulfiqar, Muqadas Jalal, Sami Aujla, Sumbal Fatima'
-note    = "Deepfake detection. Presented as a conference talk."
+tldr    = "A hierarchical ensemble that averages predictions within model families and learns cross-model weights to dynamically optimize deepfake detection performance across datasets."
+talk    = true
+cite    = """
+@inproceedings{@INPROCEEDINGS{awarenet2025,
+  author={Salman, Muhammad and Tariq, Iqra and Zulfiqar, Mishal and Jalal, Muqadas and Aujla, Sami and Fatima, Sumbal},
+  booktitle={International Conference on Energy, Power, Environment, Control and Computing (ICEPECC 2025)},
+  title={AWARE-NET: adaptive weighted averaging for robust ensemble network in deepfake detection},
+  year={2025},
+  volume={2025},
+  number={},
+  pages={526-533},
+  keywords={},
+  doi={10.1049/icp.2025.1162}
+}"""
 image   = "https://www.researchgate.net/publication/391369196/figure/fig2/AS:11431281418385765@1746155340157/AWARE-NETs-two-tier-architecture-1-intra-architecture-ensemble-combining-Xception.png"
 
 [[extra.publications.links]]
@@ -239,17 +259,17 @@ href  = "#"
 label = "slides"
 href  = "#"
 
-[[extra.publications]]
-title   = "[Paper title]"
-venue   = "Journal · 2026"
-status  = "in review"
-authors = '<span class="me">M. Salman Ilyas</span>, et al.'
-note    = "Deepfake detection."
-image   = "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80&auto=format&fit=crop"
+# [[extra.publications]]
+# title   = "[Paper title]"
+# venue   = "Journal · 2026"
+# status  = "in review"
+# authors = '<span class="me">M. Salman Ilyas</span>, et al.'
+# note    = "Deepfake detection."
+# image   = "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80&auto=format&fit=crop"
 
-[[extra.publications]]
-title   = "[Paper title]"
-venue   = "Journal · 2026"
-status  = "in review"
-authors = '<span class="me">M. Salman Ilyas</span>'
-note    = "Deepfake detection."
+# [[extra.publications]]
+# title   = "[Paper title]"
+# venue   = "Journal · 2026"
+# status  = "in review"
+# authors = '<span class="me">M. Salman Ilyas</span>'
+# note    = "Deepfake detection."
