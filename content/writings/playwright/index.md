@@ -3,7 +3,7 @@ title = "Playwright Tips - Python"
 
 date = 2026-06-10
 updated = 2026-06-10
-draft = true
+draft = false
 
 [taxonomies]
 tags = ["automation-testing", "playwright", "python"]
@@ -12,109 +12,52 @@ tags = ["automation-testing", "playwright", "python"]
 dek = "Hard-learned Python Playwright lessons and workflow optimizations after two quarters in production."
 +++
 
-# Motivation
+## Motivation
 
-I was always interested in automation testing, but not had the opportunity/chance to work on it, since I thought I had some other priorities/tasks that needs urgent attention during my studies, focus on DSA, OS, CC, Networking, so never had the chance to work with any automation framework. At work, I was assigned to do automation testing for Odoo14 CRM, given I'll be provided with the test cases in written form by QA guy, so i set out on setting up the infra via GH actions to run the test suite when code is pushed to main branch to test whether anything got broken due to new changes (regression testing).
+I was always interested in automation testing, but not had the opportunity to work on it, as I had set other priorities during my studies, such as focusing on DSA, OS, CC, Networking, so never had the chance to work with any automation framework. At work, I was assigned to do automation testing for Odoo14 CRM instance, given I'll be provided with the test cases in written form by QA, so I set out on setting up the infra via GH actions to run the test suite when code is pushed to main branch for regression testing (testing existing working flow, to ensure nothing gets broken on new changes).
 
-## Components
+Thanks to AI and another reference project that used playwright for its automation (with typescript), I was able to get up and start quickly. The project helped me a lot, and I used it as reference ground for my python-playwright setup. I mostly copy/pasted its infra that included its `.cursor` rules and tweaked them to the Odoo14.
 
-Thanks to AI and another reference project that used playwright for its automation but with typescript, I was able to get up and start quickly. The project helped me a lot, and I used it as reference ground for my python-playwright setup. I mostly copy/pasted its infra that included its .cursor rules and tweaked them to the Odoo14.
+### Optimizing the Flow
 
-## Optimized Flow
+I was only passed written testcases for about month, and it was time to optimize it by myself. My testing flow for couple of months was like this,
 
-I was only passed written testcases for about month, and it was time to optimize it by myself. My testing flow after couple of months went like this, QA will have meeting session with module expert (Odoo has tons of module - Accounting, Jobs, FSM, Contacts, ...), it gets recorded for later use. I revisit the recording, write testing steps by hand on diary, then perform those exact steps on the staging environment to validate those steps, then write those steps back to a ticket. I decided to use Github Projects for tracking/managing automation tickets, since I don't want beaurocratic process of JIRA management, GH project tightly integrates with the repo issues, pr and thats what i needed without extra dependency. So, i create issues which becomes tickets in the GH project and then the normal flow, TODO -> In Progress -> Review -> Done. But, before the test development, my most of time gets consumed by the ticket creation process, but I only tried/thinking to automate it after 4 months, so i sat and researched ways of passing video + transcript to claude and make this process automated.
+> QA will have meeting session with module expert (Odoo has tons of module - Accounting, Jobs, FSM, Contacts, ...), it gets recorded for later use. I revisit the recording, write testing steps by hand on diary, then perform those exact steps on the staging environment to validate those steps, then write those steps back to a ticket.
 
-- since meeting videos were recorded and saved to sharepoint, i didn't had access to download them, so instead of asking host to allow everytime, i landed on [ms-teams-sharepoint-downloader](https://github.com/brendangooden/ms-teams-sharepoint-downloader), and added support for firefox in it - since i was on linux, and using chrome as daily driver not thing for me
-- added [claude-video-vision](https://github.com/jordanrendric/claude-video-vision) as mcp server to my claude to give it video vision power, powered by ffmpeg - old legend that never dies even in the age of AI
-- now all the ingredients are here, just need to wire them so i created new command under `.claude/commands` with args of video, and transcript file, and provided rule under `.claude/rules` on how to create tickets for the test case by taking things in parallel with video, and transcript.
-- the crux is not to automate things at first or in the beginning, automate it if ROI is great, and you perform task regular so you've better context/understanding of the solution, so as to land on correct solution
+I decided to use [Github Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/creating-projects/creating-a-project) for tracking/managing automation tickets, since I don't want beaurocratic process of JIRA management, GH project nicely integrates with the repo Issues, PRs and thats what I was looking. So, I create issues which becomes tickets in the GH project and then the normal flow, TODO -> In Progress -> Review -> Done. But, before writing even single automation line, most of my time was being consumed by the ticket creation process, but I started to think to automate the project after 4 months, so I sat and researched ways of passing video + transcript to claude and make this process automated.
+
+![github-projects-overview](./github-projects-overview.png)
+
+Since meeting videos were recorded and saved to Sharepoint, I didn't had access to download them, so instead of asking host for access everytime, I landed on [ms-teams-sharepoint-downloader](https://github.com/brendangooden/ms-teams-sharepoint-downloader), and [added support for firefox](https://github.com/brendangooden/ms-teams-sharepoint-downloader/pull/10) in it - since I was on linux, I prefer not to use Chrome as my primary everyday browse. I added [claude-video-vision](https://github.com/jordanrendric/claude-video-vision) as mcp server to my claude to give it video vision power, powered by ffmpeg - old legend that never dies even in the age of AI.
+
+Now all the ingredients are here, just need to wire them so i created new command under `.claude/commands` with args of video, and transcript file, and provided rule under `.claude/rules` on how to create tickets for the test case by taking things in parallel with video, and transcript.
+
+> crux is not to automate things in the beginning - avoid premature optimization. Perform the task manually first to fully understand the problem and architect the right solution. Automate only when high frequency and strong ROI justify it
 
 ## Tips
 
-- use playwright codegen for finding the locators only, don't rely on it heavily for designing your tests - they won't scale better
-- know when to refactor your codebase at the right time before it starts to become messy
-- always prefer using playwright recommended locators, over messy css based selectors
-- prefer adding abstractions around common operations, like for example in my case, my automation test scenarios heavily relies on interacing with Odoo Tables, Many2One (dropdown) fields and OdooChatter box for assertion - so i've created abstractions around each of them and used them across my codebase without duplication
-- create dataclassess for passing data throughout the tests, fixtures, and pages
-- create pytest fixtures to reuse tests; they're really helpful for tests pre-requisites, like Test B needs some data which is generated by Test A, so i'll just call Test A fixture, and let Test B handle its execution from where Test A left, its similar to linux pipe system, where previous commands output becomes input for the next.
-- use `PWDEBUG=1 pytest tests/test_xyz.py -s -v` this would run test with the built-in playwright debugger - this was the feature i missed a lot in the beginning, and only came to know about couple of weeks ago. You can use it for real-time debugging for finding the correct locators via codegen. if you switch to its log tab, you can see where's the progress, what's stalling the test case, which component needs its locator to be updated, and whats causing timeouts, etc etc. i know if my memory serves me correctly, typescript version of the playwright
-- there's lot missing features in the python version of playwright regarding ecosystem, like live locator debugger
-- playwright traces are your best friend in town - before i came to know about `PWDEBUG=1 ...` command, i relied heavily on playwright tests to debug the issues during development.
-- install and use playwright vscode extension for running, and debugging the playwright tests - it seamlessly integrates within the vscode ecosystem, the part i like the most of it is its debugging terminal section, where i can change the variables value at branching paths to see how my test would behave - this is what i miss in the playwright debugger - builtin doesn't support it, its good at locating/debugging locators only.
-- use reporting and decorators one similar to allure
-- playwright docs are awesome - specially for python
-- implement POM (Page Object Model - similar to OOP) - idea is to have base_page for the module i'm testing, like for example `pages/accounting/base_page` where shared locators, and functions would exists for the entire accounting module, that includes save, cancel, approve or common buttons. then for specific to each test, i create page which would extend that base_page via inheritence to get all those functionalities/locators without duplication. its the first time in my career where i'm implementing something close to OOP, elsewhere its functional programming.
+Here're some more tips that I gathered during this period:
 
-# Motivation
+- use [playwright codegen](https://playwright.dev/docs/codegen) for finding the locators only, don't rely on it heavily for designing your tests - they won't scale better
 
-I have always been interested in automation testing, but during my studies, I prioritized deep-diving into Data Structures & Algorithms (DSA), Operating Systems, Computer Networks, and Cloud Computing. Because of this, I never actually had the chance to work with an automation framework.
+- know when to refactor your codebase at the right time before it starts to become messy - this becomes more crucial if codebase is being AI generated
 
-That changed at work when I was assigned to automate testing for an Odoo 14 CRM instance. Our QA engineer provided written test cases, and my first task was setting up the infrastructure via GitHub Actions. The goal was simple: run the test suite on every push to the `main` branch to catch regressions early.
+- always prefer using [playwright recommended locators](https://playwright.dev/docs/locators), over messy css based selectors
 
-## The Reference Point
+- prefer adding abstractions around common operations, like for example in my case, my automation test scenarios heavily relies on interacing with Odoo Tables, Many2One (dropdown) fields and OdooChatter box for assertion, each of them is notorius to automate, once I've automate them - I create abstractions around each of them and used them across my codebase without duplication, so never to endure the pain again.
 
-Thanks to AI and a reference project built by another team, I got up and running quickly. Their project used Playwright with TypeScript, but it served as a great blueprint. I adapted their infrastructure, copied and tweaked their `.cursorrules`, and translated the setup for Python and Odoo 14.
+- utilize python dataclassess for passing data throughout the tests, fixtures, and pages
 
-## The Optimized Flow: From Manual to AI-Driven
+- create pytest fixtures to reuse tests; they're really helpful for tests pre-requisites. If Test B requires to repeat the same flow automated by Test A, I invoke Test A as a fixture. Test B seamlessly picks up right where Test A left off, its similar to linux pipe system, where previous commands output becomes input for the next.
 
-For the first month, I manually translated written test cases into code. But as time went on, I needed to optimize the workflow.
+- use `PWDEBUG=1 pytest tests/test_xyz.py -s -v` this would run test with the built-in playwright debugger - this was the feature I missed a lot in the beginning, and only came to know about couple of weeks ago. You can use it for real-time debugging for finding the correct locators via codegen. If you switch to its log tab, you can see where's the progress, it would highlight the locator as it runs the test, what's stalling the test case, which component needs its locator to be updated, and whats causing timeouts, etc etc. ~~I know if my memory serves me correctly, typescript version of the playwright, there's lot missing features in the python version of playwright regarding ecosystem, like live locator debugger~~
 
-After a few months, our testing process evolved into this:
+- playwright traces are your best friend in town - before I came to know about `PWDEBUG=1 ...` command, I relied heavily on playwright tests to debug the issues during development.
 
-1. The QA engineer holds a recorded meeting with an Odoo module expert (Accounting, Jobs, FSM, Contacts, etc.).
-2. I watch the recording, write the testing steps down in a physical diary, and manually validate them in a staging environment.
-3. I log those steps back into our project tracker.
+- install and use [playwright vscode extension](https://playwright.dev/docs/getting-started-vscode) for running, and debugging the playwright tests - it seamlessly integrates within the vscode ecosystem, the part I like the most of it is its debugging terminal section, where I can change the variables value at branching paths to see how my test would behave - this is what I was missing in the playwright debugger - builtin doesn't support it, its good at locating/debugging locators only.
 
-To avoid bureaucratic overhead, I chose **GitHub Projects** instead of Jira. It integrates tightly with our repository's issues and pull requests right out of the box.
+- use reporting and decorators one similar to [allure](https://allurereport.org/)
 
-However, before I could even write a line of test code, ticket creation was eating up most of my time. After four months of this, I decided it was time to automate the pipeline by feeding the video and transcript into Claude. Here is how I wired it together:
+- playwright docs are awesome - specially for python, visit them once a while. You can have `normalize()` function, its just awesome, takes in accessibility tree locator, and outputs the recommended version of it. This function is availble in v1.59+, so I upgraded my entire toolchain for it.
 
-- **Bypassing Sharepoint Restrictions:** Because meeting recordings were saved on SharePoint without download access, I used [ms-teams-sharepoint-downloader](https://github.com/brendangooden/ms-teams-sharepoint-downloader). I even added Firefox support to it, since I use Linux and prefer it over Chrome.
-- **Giving Claude Vision:** I added [claude-video-vision](https://github.com/jordanrendric/claude-video-vision) as an MCP server to my Claude setup, powered by FFmpeg (an old legend that never dies, even in the AI era).
-- **Wiring the Automation:** I created a custom command under `.claude/commands` that accepts a video and a transcript file. A corresponding rule under `.claude/rules` instructs Claude to analyze both assets in parallel and automatically generate highly accurate testing tickets.
-
-**The big takeaway:** Don't automate early. Wait until the ROI is clear and you have performed the task manually enough times to truly understand the problem. That is how you land on the right solution.
-
----
-
-## Production Tips for Python Playwright
-
-### 1. Don't rely too heavily on `codegen`
-
-Use Playwright’s `codegen` strictly for finding tricky locators. Do not rely on it to structure your test files, or your codebase will fail to scale.
-
-### 2. Know when to refactor
-
-Do not wait until your codebase is an unmaintainable mess. Refactor early and often as patterns begin to emerge.
-
-### 3. Trust recommended locators over CSS
-
-Always prefer Playwright’s built-in, user-facing locators (like `get_by_role` or `get_by_text`) over fragile, messy CSS selectors that break when the UI changes.
-
-### 4. Build abstractions for repetitive UI components
-
-Our automation heavily relies on interacting with Odoo Tables, Many2One (dropdown) fields, and the Odoo Chatter box for assertions. Creating dedicated abstraction layers for these shared components eliminated massive code duplication.
-
-### 5. Pass data using Dataclasses
-
-Use Python `dataclasses` to cleanly pass structured data across your tests, fixtures, and Page Objects.
-
-### 6. Chain pre-requisites with Pytest Fixtures
-
-Pytest fixtures are incredibly powerful for managing test states. If Test B requires data generated by Test A, I invoke Test A as a fixture. Test B seamlessly picks up right where Test A left off—very similar to how a Linux pipe works.
-
-### 7. Embrace `PWDEBUG=1` for real-time debugging
-
-Running your tests with `PWDEBUG=1 pytest tests/test_xyz.py -s -v` opens the built-in Playwright debugger. I missed this feature early on, but it is a game-changer. It lets you step through tests line-by-line, test locators live, and view logs to see exactly what is stalling or causing a timeout.
-
-### 8. Use Traces for CI failures
-
-Before I discovered the interactive debugger, Playwright Traces were my best friend. They are absolutely essential for diagnosing exactly why a test failed inside a headless GitHub Actions runner.
-
-### 9. Leverage the VS Code Extension
-
-The Playwright VS Code extension integrates beautifully into the editor. My favorite feature is the debug console: when a test hits a breakpoint, you can interactively change variable values at branching paths to see how the test behaves. (Note: The built-in Playwright debugger is great for locators, but doesn't support interactive variable evaluation like the VS Code terminal does).
-
-### 10. Implement the Page Object Model (POM)
-
-This project was one of the first times in my career where I leaned heavily into Object-Oriented Programming (OOP) over functional programming. I created a base class (e.g., `pages/accounting/base_page.py`) to hold shared actions like _Save_, _Cancel_, and _Approve_. Specific test pages then inherit from this base class, keeping the codebase DRY (Don't Repeat Yourself).
+- implement POM (Page Object Model - similar to OOP) - idea is to have base_page for the module I'm testing, like for example `pages/accounting/base_page` where shared locators, and functions would exists for the entire accounting module, that includes save, cancel, approve or common buttons. Then for specific to each test, I create page which would extend that `base_page` via inheritence to get all those functionalities/locators without duplication. Its the first time in my career where I'm implementing something close to OOP, elsewhere its functional programming.
